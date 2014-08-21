@@ -1,15 +1,16 @@
 import collection.JavaConversions._
 import org.apache.spark.{SparkConf, SparkContext}
+import com.google.common.base.Splitter
 
 /*** SimpleApp.scala ***/
 
 object SimpleApp {
   def main(args: Array[String]) {
-    val file = "file:///etc/passwd" // Should be some file on your system
+    val file = args(0) 
+//    val file = "file:///etc/passwd" // Should be some file on your system
     val sc = new SparkContext(new SparkConf().setAppName("Spark Count"))
     val data = sc.textFile(file, 2)
-    val words = data.map(x => x.split(":"))
-    val sizes = words.map(x => x.length)
+    val sizes = data.map(x => Splitter.on(":").omitEmptyStrings().split(x).size).cache()
     val min = sizes.reduce(math.min)
     val max = sizes.reduce(math.max)
     //println(s"Lengths: $size.")
