@@ -1,5 +1,3 @@
-package pl.icm.edu.spark.example
-
 import collection.JavaConversions._
 import org.apache.spark.{SparkConf, SparkContext}
 
