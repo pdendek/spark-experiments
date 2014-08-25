@@ -1,10 +1,9 @@
-spark-intro
+spark-experiments
 ===========
 
-This is a sample Spark app. To run, type that on your cluster:
-  
-    git clone https://github.com/pdendek/spark-intro.git
-    cd spark-intro  
+Usage:
+    git clone https://github.com/pdendek/spark-experiments.git
+    cd spark-experiments
     mvn clean install
-    ./submit.sh SimpleApp target/spark-intro-1.0-SNAPSHOT-jar-with-dependencies.jar "file:///etc/passwd" 
+    ./submit.sh pl.edu.icm.adalab.${ClassName} target/spark-intro-1.0-SNAPSHOT.jar "path/to/input" "path/to/output"
 
