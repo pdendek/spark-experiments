@@ -2,12 +2,10 @@ import util.control.Breaks._
 import collection.JavaConversions._
 import scala.io.Source
 import Array._
-//import org.apache.spark.{SparkConf, SparkContext}
-//import com.google.common.base.Splitter
 
-/*** SimpleApp.scala ***/
+/*** LocalFormatData.scala ***/
 
-object SimpleFormatData {
+object LocalFormatData {
   def main(args: Array[String]) {
     val file = args(0)
     val input_data = Source.fromFile(file).mkString.split("\n").map(_.split("\t"));
