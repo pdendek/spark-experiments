@@ -1,4 +1,4 @@
-package pl.adalab.spark
+package pl.edu.icm.adalab.disambiguation
 
 import util.control.Breaks._
 import collection.JavaConversions._
