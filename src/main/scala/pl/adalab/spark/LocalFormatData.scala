@@ -1,3 +1,5 @@
+package pl.adalab.spark
+
 import util.control.Breaks._
 import collection.JavaConversions._
 import scala.io.Source
