@@ -19,14 +19,11 @@ object SparkFormatData {
     val first_line: Array[String] = splitted_file.first();
     val idxOfPersonId = MyFucntions.getPersonIdIdx("EX_PERSON_ID", MyFucntions.
       unpackData(0, first_line.slice(1, first_line.length)))
-    //println("idxOfPersonId: "+idxOfPersonId)
     val header = MyFucntions.mixDataInCorrectOrder("ID", idxOfPersonId, MyFucntions.unpackData(0, first_line.slice(1, first_line.length)))
-    //println("header "+header)
     val formated_data = splitted_file.
       map(x => MyFucntions.
         mixDataInCorrectOrder(x(0), idxOfPersonId, MyFucntions.
           unpackData(1, x.slice(1, x.length)))).cache()
-    //formated_data.foreach(println(_))
     val out_rdd = sc.parallelize(Array[String](header) ++ formated_data.collect())
     out_rdd.saveAsTextFile(out_file+"__"+new Date().toString().replaceAll("[\\s:]+", "_"))
   }
