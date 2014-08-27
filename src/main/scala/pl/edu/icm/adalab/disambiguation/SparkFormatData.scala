@@ -5,6 +5,8 @@ import collection.JavaConversions._
 import Array._
 import org.apache.spark.{ SparkConf, SparkContext }
 import java.util.Date
+import org.apache.hadoop.fs.FileSystem
+import org.apache.hadoop.fs.Path
 
 /*** SparkFormatData.scala ***/
 
@@ -25,7 +27,9 @@ object SparkFormatData {
         mixDataInCorrectOrder(x(0), idxOfPersonId, MyFucntions.
           unpackData(1, x.slice(1, x.length)))).cache()
     val out_rdd = sc.parallelize(Array[String](header) ++ formated_data.collect())
-    out_rdd.saveAsTextFile(out_file+"__"+new Date().toString().replaceAll("[\\s:]+", "_"))
+//    val fs : FileSystem = FileSystem.get(getConf());
+//    fs.delete(new Path("path/to/file"), true); // delete file, true for recursive 
+    out_rdd.saveAsTextFile(out_file) //+ "__" + new Date().toString().replaceAll("[\\s:]+", "_"))
   }
 
   object MyFucntions {
