@@ -1,0 +1,2 @@
+mvn clean install -D skipTests ;
+FILE=$1 ; TANOUT=hdfs://localhost:8020/user/pdendek/spark-intro/${FILE}.transformed; SVMOUT=hdfs://localhost:8020/user/pdendek/spark-intro/${FILE}.svm ; hadoop fs -rm -r -f ${TANOUT} ;hadoop fs -rm -r -f ${SVMOUT} ;   ./submit.sh pl.edu.icm.adalab.disambiguation.DoSVMOnInputData target/spark-experiments-1.0-SNAPSHOT.jar hdfs://localhost:8020/user/pdendek/spark-intro/${FILE} ${TANOUT} ${SVMOUT}
